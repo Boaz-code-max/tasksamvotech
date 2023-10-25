@@ -22,7 +22,7 @@ resource "aws_vpc" "amvn1" {
 resource "aws_subnet" "trail_subnets" {
   count      = var.subnets_count
   vpc_id     = aws_vpc.amvn1.id
-  cidr_block = var.amvsubnets_ranges[count.index]
+  cidr_block = cidrsubnet(var.netork_Cidr,8,count.index)
 
   tags = {
     Name = var.subnets_names[count.index]
