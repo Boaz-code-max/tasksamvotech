@@ -1,5 +1,5 @@
 resource "aws_vpc" "trl2" {
-  cidr_block = "172.16.0.0/16"
+  cidr_block = var.vpc_amv.id
 
   tags = {
     Name = "amvvpc"
@@ -8,7 +8,7 @@ resource "aws_vpc" "trl2" {
 
 resource "aws_subnet" "sub1" {
   vpc_id            = aws_vpc.trl2.id
-  cidr_block        = "172.16.10.0/24"
+  cidr_block        = var.amv_subnets.id
   availability_zone = "us-east-1a"
 
   tags = {
